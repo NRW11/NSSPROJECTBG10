@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ปฏิทิน NSS สิงหาคม 2569</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Sarabun','Noto Sans Thai',sans-serif;min-height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%);color:#e2e8f0;padding:18px 12px 40px}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:rgba(255,255,255,.05)}::-webkit-scrollbar-thumb{background:rgba(99,102,241,.5);border-radius:2px}
+.header{text-align:center;margin-bottom:20px}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.4);border-radius:12px;padding:6px 16px;margin-bottom:10px;font-size:12px;font-weight:600;color:#a5b4fc;letter-spacing:.05em}
+h1{font-size:22px;font-weight:700;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{font-size:12px;color:#64748b;margin-top:4px}
+.notice{display:inline-block;background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.3);border-radius:8px;padding:5px 14px;font-size:11px;color:#fbbf24;margin-top:8px}
+.stats{display:flex;justify-content:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.stat{border-radius:10px;padding:8px 14px;text-align:center;min-width:68px;border:1px solid}
+.stat-num{font-size:18px;font-weight:700}
+.stat-label{font-size:11px;color:#94a3b8}
+.cal-wrap{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;max-width:720px;margin:0 auto 16px}
+.dhdrs{display:grid;grid-template-columns:repeat(7,1fr);background:rgba(99,102,241,.2)}
+.dhdr{text-align:center;padding:9px 2px;font-size:12px;font-weight:700;color:#94a3b8}
+.dhdr.we{color:#f87171}
+.dgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;padding:6px}
+.dcell{border-radius:9px;padding:6px 3px;min-height:56px;display:flex;flex-direction:column;align-items:center;gap:3px;border:1px solid transparent;cursor:pointer;transition:all .15s}
+.dcell.has{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)}
+.dcell.sel{background:rgba(99,102,241,.3)!important;border-color:#6366f1!important;box-shadow:0 0 14px rgba(99,102,241,.3)}
+.dnum{font-size:12px;font-weight:600;color:#cbd5e1}
+.dnum.we{color:#f87171}
+.ddots{display:flex;gap:3px;flex-wrap:wrap;justify-content:center}
+.dot{width:7px;height:7px;border-radius:50%}
+.dcnt{font-size:10px;color:#64748b;font-weight:500}
+.detail{background:rgba(255,255,255,.03);border:1px solid rgba(99,102,241,.3);border-radius:16px;padding:16px;max-width:720px;margin:0 auto;animation:si .2s ease}
+@keyframes si{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;flex-wrap:wrap;gap:8px}
+.dtitle{font-size:16px;font-weight:700;color:#c7d2fe}
+.zfilters{display:flex;gap:5px;flex-wrap:wrap}
+.zfbtn{padding:3px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.1);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;background:transparent;color:#64748b;transition:all .15s}
+.zfbtn.a-all{background:rgba(99,102,241,.4);border-color:#6366f1;color:#c7d2fe}
+.zfbtn.a-bg1{background:rgba(59,130,246,.2);border-color:#3b82f6;color:#60a5fa}
+.zfbtn.a-bg2{background:rgba(34,197,94,.2);border-color:#22c55e;color:#4ade80}
+.zfbtn.a-bg9{background:rgba(245,158,11,.2);border-color:#f59e0b;color:#fbbf24}
+.slist{display:flex;flex-direction:column;gap:7px;max-height:320px;overflow-y:auto}
+.scard{display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 12px}
+.sdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.sname{font-size:13px;font-weight:600;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.smeta{font-size:11px;color:#64748b;margin-top:2px}
+.zbadge{padding:1px 7px;border-radius:4px;font-weight:600;font-size:11px;border:1px solid}
+.empty{text-align:center;color:#475569;padding:22px;font-size:13px}
+.hint{text-align:center;color:#334155;padding:14px;font-size:12px}
+.legend{display:flex;justify-content:center;gap:14px;margin-top:20px;flex-wrap:wrap}
+.li{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8}
+.ldot{width:9px;height:9px;border-radius:50%}
+.updated{text-align:center;margin-top:14px;font-size:11px;color:#475569}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="badge">📋 แผนขยายผล Migrate NSS — ปี 2569</div>
+  <h1>ปฏิทินเข้าร้าน สิงหาคม 2569</h1>
+  <p class="subtitle">เริ่มทำงานวันที่ 4-14 สิงหาคม 2569</p>
+  <div class="notice">⚠️ เฉพาะโซน BG1 · BG2 · BG9</div>
+</div>
+<div class="stats" id="stats"></div>
+<div class="cal-wrap">
+  <div class="dhdrs" id="dhdrs"></div>
+  <div class="dgrid" id="dgrid"></div>
+</div>
+<div id="detail"></div>
+<div class="legend">
+  <div class="li"><div class="ldot" style="background:#2563eb"></div>BG1</div>
+  <div class="li"><div class="ldot" style="background:#16a34a"></div>BG2</div>
+  <div class="li"><div class="ldot" style="background:#d97706"></div>BG9</div>
+</div>
+<div class="updated">อัพเดทข้อมูล NSS เมื่อวันที่ 25-07-69</div>
+
+<script>
+const CAL = {
+  4:[{store:"จรัญ-29(สายใต้เก่า)",zone:"BG1"},{store:"อิสระภาพ-21",zone:"BG2"}],
+  5:[{store:"จรัญฯ 22",zone:"BG1"},{store:"ปากคลอง 3",zone:"BG2"}],
+  6:[{store:"ชุมชนบางยี่ขัน",zone:"BG1"},{store:"สามเสน 2",zone:"BG2"}],
+  7:[{store:"ป.ปิ่นเกล้า (ตลิ่งชัน)",zone:"BG1"},{store:"ท่าเรือพระอาทิตย์",zone:"BG2"}],
+  8:[{store:"อรุณอัมรินทร์ 37",zone:"BG1"},{store:"อิสภาพ 37",zone:"BG2"}],
+  9:[{store:"ปิ่นเกล้า 3",zone:"BG1"},{store:"อิสรภาพ 35 แยก 10",zone:"BG2"}],
+  10:[{store:"เบลลินี G&G Shell พรานนก",zone:"BG1"},{store:"ถนนพระอาทิตย์",zone:"BG2"}],
+  11:[{store:"เบลลินี G&G รพ.ศิริราช ศูนย์อาหาร ริมน้ำ",zone:"BG2"},{store:"จรัญ 96/2",zone:"BG9"},{store:"เบลลินี B&B บางกรวย ไทรน้อย ซอย20",zone:"BG9"}],
+  12:[{store:"ซอยพิพิธโภคัย (กรุงเทพมหานคร)",zone:"BG2"},{store:"บางศรีเมือง",zone:"BG9"},{store:"บางกรวย-ไทรน้อย ซอย 17/1",zone:"BG9"}],
+  13:[{store:"ถนนอัษฎางค์",zone:"BG2"},{store:"สิรินธร - บางกรวย",zone:"BG9"},{store:"ซอยเพิ่มแฉล้มอุทิศ (สะพานเจษฎาบดินทร์)",zone:"BG9"}],
+  14:[{store:"คอนโดสมชาย",zone:"BG9"},{store:"เบลลินี G&G Makro นครอินทร์",zone:"BG9"},{store:"ช.สุขศรีเมือง",zone:"BG9"}]
+};
+
+// สิงหาคม 2569 (2026) เริ่มวันเสาร์ = index 6
+const MSTART = 6;
+const MDAYS = 31;
+const ZC = {
+  BG1:{bg:"rgba(59,130,246,.15)",border:"#3b82f6",text:"#60a5fa",dot:"#2563eb"},
+  BG2:{bg:"rgba(34,197,94,.15)",border:"#22c55e",text:"#4ade80",dot:"#16a34a"},
+  BG9:{bg:"rgba(245,158,11,.15)",border:"#f59e0b",text:"#fbbf24",dot:"#d97706"}
+};
+const DAYS=["อา","จ","อ","พ","พฤ","ศ","ส"];
+let selDay=null, selZone="ALL";
+
+function stats(){
+  const tot=Object.values(CAL).flat().length;
+  const cnt={BG1:0,BG2:0,BG9:0};
+  Object.values(CAL).flat().forEach(s=>{if(cnt[s.zone]!==undefined)cnt[s.zone]++;});
+  document.getElementById("stats").innerHTML=[
+    {l:"ทั้งเดือน",v:tot,c:"#a5b4fc",bg:"rgba(99,102,241,.15)",bc:"rgba(99,102,241,.4)"},
+    {l:"BG1",v:cnt.BG1,c:"#60a5fa",bg:"rgba(59,130,246,.1)",bc:"rgba(59,130,246,.4)"},
+    {l:"BG2",v:cnt.BG2,c:"#4ade80",bg:"rgba(34,197,94,.1)",bc:"rgba(34,197,94,.4)"},
+    {l:"BG9",v:cnt.BG9,c:"#fbbf24",bg:"rgba(245,158,11,.1)",bc:"rgba(245,158,11,.4)"}
+  ].map(s=>`<div class="stat" style="background:${s.bg};border-color:${s.bc}"><div class="stat-num" style="color:${s.c}">${s.v}</div><div class="stat-label">${s.l}</div></div>`).join("");
+}
+
+function dhdrs(){
+  document.getElementById("dhdrs").innerHTML=DAYS.map((d,i)=>
+    `<div class="dhdr ${i===0||i===6?"we":""}">${d}</div>`
+  ).join("");
+}
+
+function calendar(){
+  let h="";
+  for(let i=0;i<MSTART;i++) h+=`<div></div>`;
+  for(let d=1;d<=MDAYS;d++){
+    const stores=CAL[d]||[];
+    const isSel=selDay===d, has=stores.length>0;
+    const col=(MSTART+d-1)%7, we=col===0||col===6;
+    const zones=[...new Set(stores.map(s=>s.zone))];
+    h+=`<div class="dcell ${has?"has":""} ${isSel?"sel":""}" onclick="pickDay(${d})">
+      <span class="dnum ${we?"we":""}">${d}</span>
+      ${has?`<div class="ddots">${zones.map(z=>`<div class="dot" style="background:${ZC[z]?.dot||"#999"}"></div>`).join("")}</div><span class="dcnt">${stores.length} ร้าน</span>`:""}
+    </div>`;
+  }
+  document.getElementById("dgrid").innerHTML=h;
+}
+
+function detail(){
+  const el=document.getElementById("detail");
+  if(!selDay){el.innerHTML=`<div class="hint">👆 แตะวันที่ที่มีจุดสีเพื่อดูรายการร้านค้า</div>`;return;}
+  const stores=CAL[selDay]||[];
+  const filtered=selZone==="ALL"?stores:stores.filter(s=>s.zone===selZone);
+  const zm={ALL:"a-all",BG1:"a-bg1",BG2:"a-bg2",BG9:"a-bg9"};
+  const col=(MSTART+selDay-1)%7;
+  const dayName=DAYS[col];
+  const cards=filtered.length===0
+    ?`<div class="empty">ไม่มีร้านในโซนนี้วันนี้</div>`
+    :filtered.map(s=>{
+        const z=ZC[s.zone]||{bg:"#1e293b",border:"#475569",text:"#94a3b8",dot:"#475569"};
+        return `<div class="scard">
+          <div class="sdot" style="background:${z.dot}"></div>
+          <div style="flex:1;min-width:0">
+            <div class="sname">${s.store}</div>
+            <div class="smeta"><span class="zbadge" style="background:${z.bg};color:${z.text};border-color:${z.border}60">${s.zone}</span></div>
+          </div>
+        </div>`;
+      }).join("");
+  el.innerHTML=`<div class="detail">
+    <div class="dh">
+      <div class="dtitle">📅 วัน${dayName} ${selDay} สิงหาคม 2569 — ${stores.length} ร้าน</div>
+      <div class="zfilters">${["ALL","BG1","BG2","BG9"].map(z=>`<button class="zfbtn ${selZone===z?zm[z]:""}" onclick="pickZone('${z}')">${z}</button>`).join("")}</div>
+    </div>
+    <div class="slist">${cards}</div>
+  </div>`;
+}
+
+function pickDay(d){selDay=selDay===d?null:d;selZone="ALL";calendar();detail();}
+function pickZone(z){selZone=z;detail();}
+
+stats();dhdrs();calendar();detail();
+</script>
+</body>
+</html>
