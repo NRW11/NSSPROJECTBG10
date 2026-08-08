@@ -3,171 +3,453 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ปฏิทิน NSS สิงหาคม 2569</title>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>แผน Migrate NSS — กันยายน 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Sarabun','Noto Sans Thai',sans-serif;min-height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%);color:#e2e8f0;padding:18px 12px 40px}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:rgba(255,255,255,.05)}::-webkit-scrollbar-thumb{background:rgba(99,102,241,.5);border-radius:2px}
-.header{text-align:center;margin-bottom:20px}
-.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.4);border-radius:12px;padding:6px 16px;margin-bottom:10px;font-size:12px;font-weight:600;color:#a5b4fc;letter-spacing:.05em}
-h1{font-size:22px;font-weight:700;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.subtitle{font-size:12px;color:#64748b;margin-top:4px}
-.notice{display:inline-block;background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.3);border-radius:8px;padding:5px 14px;font-size:11px;color:#fbbf24;margin-top:8px}
-.stats{display:flex;justify-content:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-.stat{border-radius:10px;padding:8px 14px;text-align:center;min-width:68px;border:1px solid}
-.stat-num{font-size:18px;font-weight:700}
-.stat-label{font-size:11px;color:#94a3b8}
-.cal-wrap{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;max-width:720px;margin:0 auto 16px}
-.dhdrs{display:grid;grid-template-columns:repeat(7,1fr);background:rgba(99,102,241,.2)}
-.dhdr{text-align:center;padding:9px 2px;font-size:12px;font-weight:700;color:#94a3b8}
-.dhdr.we{color:#f87171}
-.dgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;padding:6px}
-.dcell{border-radius:9px;padding:6px 3px;min-height:56px;display:flex;flex-direction:column;align-items:center;gap:3px;border:1px solid transparent;cursor:pointer;transition:all .15s}
-.dcell.has{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.1)}
-.dcell.sel{background:rgba(99,102,241,.3)!important;border-color:#6366f1!important;box-shadow:0 0 14px rgba(99,102,241,.3)}
-.dnum{font-size:12px;font-weight:600;color:#cbd5e1}
-.dnum.we{color:#f87171}
-.ddots{display:flex;gap:3px;flex-wrap:wrap;justify-content:center}
-.dot{width:7px;height:7px;border-radius:50%}
-.dcnt{font-size:10px;color:#64748b;font-weight:500}
-.detail{background:rgba(255,255,255,.03);border:1px solid rgba(99,102,241,.3);border-radius:16px;padding:16px;max-width:720px;margin:0 auto;animation:si .2s ease}
-@keyframes si{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;flex-wrap:wrap;gap:8px}
-.dtitle{font-size:16px;font-weight:700;color:#c7d2fe}
-.zfilters{display:flex;gap:5px;flex-wrap:wrap}
-.zfbtn{padding:3px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.1);font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;background:transparent;color:#64748b;transition:all .15s}
-.zfbtn.a-all{background:rgba(99,102,241,.4);border-color:#6366f1;color:#c7d2fe}
-.zfbtn.a-bg1{background:rgba(59,130,246,.2);border-color:#3b82f6;color:#60a5fa}
-.zfbtn.a-bg2{background:rgba(34,197,94,.2);border-color:#22c55e;color:#4ade80}
-.zfbtn.a-bg9{background:rgba(245,158,11,.2);border-color:#f59e0b;color:#fbbf24}
-.slist{display:flex;flex-direction:column;gap:7px;max-height:320px;overflow-y:auto}
-.scard{display:flex;align-items:center;gap:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 12px}
-.sdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.sname{font-size:13px;font-weight:600;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.smeta{font-size:11px;color:#64748b;margin-top:2px}
-.zbadge{padding:1px 7px;border-radius:4px;font-weight:600;font-size:11px;border:1px solid}
-.empty{text-align:center;color:#475569;padding:22px;font-size:13px}
-.hint{text-align:center;color:#334155;padding:14px;font-size:12px}
-.legend{display:flex;justify-content:center;gap:14px;margin-top:20px;flex-wrap:wrap}
-.li{display:flex;align-items:center;gap:5px;font-size:12px;color:#94a3b8}
-.ldot{width:9px;height:9px;border-radius:50%}
-.updated{text-align:center;margin-top:14px;font-size:11px;color:#475569}
+  :root{
+    --ink:#0d1b1e;
+    --panel:#12262a;
+    --panel-2:#17323780;
+    --line: #2a4a4f;
+    --paper:#eef3ee;
+    --paper-dim:#b9c9c6;
+    --bg1:#3fb7a8;   /* teal   - BG1 */
+    --bg2:#e0a53c;   /* amber  - BG2 */
+    --bg9:#e0664f;   /* clay   - BG9 */
+    --grid-track:#0a1517;
+    --radius: 10px;
+  }
+  *{ box-sizing:border-box; }
+  html,body{
+    margin:0; padding:0;
+    background: var(--ink);
+    color: var(--paper);
+    font-family:"Noto Sans Thai","IBM Plex Mono",sans-serif;
+    min-height:100vh;
+  }
+  body{
+    background-image:
+      radial-gradient(circle at 15% 0%, #14343133 0%, transparent 40%),
+      radial-gradient(circle at 90% 10%, #2a4a4f22 0%, transparent 45%);
+  }
+
+  .wrap{ max-width: 1180px; margin: 0 auto; padding: 28px 20px 60px; }
+
+  /* ---------- Header ---------- */
+  header{
+    display:flex; flex-wrap:wrap; gap:20px;
+    justify-content:space-between; align-items:flex-end;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 18px; margin-bottom: 22px;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: var(--bg1);
+    margin: 0 0 6px;
+  }
+  h1{
+    font-family:"Chakra Petch", sans-serif;
+    font-weight:700;
+    font-size: clamp(24px, 3.4vw, 34px);
+    margin:0;
+    letter-spacing: 0.01em;
+  }
+  h1 span{ color: var(--paper-dim); font-weight:500; }
+  .sub{
+    font-size: 13px;
+    color: var(--paper-dim);
+    margin-top: 6px;
+    font-family:"IBM Plex Mono", monospace;
+  }
+  .totals{
+    display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .total-chip{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12px;
+    border:1px solid var(--line);
+    border-radius: 999px;
+    padding:7px 14px;
+    display:flex; align-items:center; gap:8px;
+    background: var(--panel);
+  }
+  .dot{ width:8px; height:8px; border-radius:50%; flex:none; }
+  .total-chip b{ font-family:"Chakra Petch"; font-size:14px; color:var(--paper); }
+
+  /* ---------- Filter tabs ---------- */
+  .tabs{
+    display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap;
+  }
+  .tab{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12.5px;
+    letter-spacing:0.03em;
+    padding:9px 16px;
+    border-radius: 999px;
+    border:1px solid var(--line);
+    background: transparent;
+    color: var(--paper-dim);
+    cursor:pointer;
+    transition: all .15s ease;
+    display:flex; align-items:center; gap:8px;
+  }
+  .tab:hover{ border-color:#4a6f74; color:var(--paper); }
+  .tab.active{
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+    font-weight:600;
+  }
+  .tab .dot{ width:7px; height:7px; }
+
+  /* ---------- Calendar ---------- */
+  .cal-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:10px;
+  }
+  .cal-head .month-label{
+    font-family:"Chakra Petch"; font-weight:600; font-size:15px; color:var(--paper-dim);
+  }
+  .weekdays{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap:6px;
+    margin-bottom:6px;
+  }
+  .weekdays div{
+    text-align:center;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color: var(--paper-dim);
+    text-transform:uppercase;
+    padding-bottom:4px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap:6px;
+    background: var(--grid-track);
+    padding:6px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+  }
+  .cell{
+    background: var(--panel);
+    border-radius: var(--radius);
+    min-height: 108px;
+    padding: 9px 9px 8px;
+    display:flex; flex-direction:column;
+    cursor:default;
+    border: 1px solid transparent;
+    position:relative;
+    transition: border-color .15s ease, transform .1s ease;
+  }
+  .cell.empty{ background:transparent; }
+  .cell.has-data{ cursor:pointer; }
+  .cell.has-data:hover{
+    border-color:#4a6f74;
+    transform: translateY(-1px);
+  }
+  .cell .daynum{
+    font-family:"Chakra Petch"; font-weight:600; font-size:15px;
+    color: var(--paper);
+  }
+  .cell.weekend .daynum{ color: var(--paper-dim); }
+  .cell .count-badge{
+    position:absolute; top:8px; right:9px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    color: var(--paper-dim);
+  }
+  .chips{
+    margin-top:auto;
+    display:flex; flex-direction:column; gap:3px;
+  }
+  .chip-row{
+    display:flex; align-items:center; gap:5px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px;
+    color: var(--paper);
+  }
+  .chip-row .sq{ width:7px; height:7px; border-radius:2px; flex:none; }
+  .chip-row .n{ color: var(--paper-dim); }
+
+  /* ---------- Legend ---------- */
+  .legend-note{
+    margin-top:14px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11.5px;
+    color: var(--paper-dim);
+  }
+
+  /* ---------- Modal ---------- */
+  .overlay{
+    position:fixed; inset:0;
+    background: rgba(5,12,13,0.72);
+    backdrop-filter: blur(2px);
+    display:none;
+    align-items:center; justify-content:center;
+    z-index:50;
+    padding: 20px;
+  }
+  .overlay.show{ display:flex; }
+  .modal{
+    background: var(--panel);
+    border:1px solid var(--line);
+    border-radius: 16px;
+    width: 100%; max-width: 480px;
+    max-height: 82vh;
+    display:flex; flex-direction:column;
+    overflow:hidden;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .modal-head{
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:flex-start;
+    gap:12px;
+  }
+  .modal-head .date-label{
+    font-family:"Chakra Petch"; font-weight:700; font-size:20px;
+  }
+  .modal-head .date-sub{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11.5px; color:var(--paper-dim); margin-top:3px;
+  }
+  .close-btn{
+    background:none; border:1px solid var(--line); color:var(--paper-dim);
+    width:30px; height:30px; border-radius:8px; cursor:pointer;
+    font-size:15px; line-height:1; flex:none;
+  }
+  .close-btn:hover{ color:var(--paper); border-color:#4a6f74; }
+  .modal-body{ overflow-y:auto; padding: 8px 10px 16px; }
+  .zone-group{ margin-top:10px; }
+  .zone-group:first-child{ margin-top:6px; }
+  .zone-title{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11.5px; letter-spacing:0.06em;
+    padding: 6px 10px;
+    display:flex; align-items:center; gap:8px;
+    color: var(--paper-dim);
+  }
+  .zone-title .sq{ width:8px; height:8px; border-radius:2px; }
+  .zone-title b{ color:var(--paper); font-family:"Chakra Petch"; font-size:12.5px; }
+  ul.store-list{ list-style:none; margin:0; padding:0; }
+  ul.store-list li{
+    display:flex; justify-content:space-between; gap:10px;
+    padding: 9px 12px;
+    margin: 0 4px 3px;
+    border-radius: 8px;
+    background: var(--panel-2);
+    font-size: 13.5px;
+  }
+  ul.store-list li .no{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:11px; color: var(--paper-dim);
+    flex:none; padding-top:1px;
+  }
+  .empty-modal{
+    padding: 30px 20px; text-align:center; color:var(--paper-dim); font-size:13px;
+  }
+
+  @media (max-width: 640px){
+    .cell{ min-height: 78px; padding:7px 6px 6px; }
+    .weekdays div{ font-size:10px; }
+    .chip-row{ font-size:10px; }
+    .cell .daynum{ font-size:13px; }
+  }
 </style>
 </head>
 <body>
-<div class="header">
-  <div class="badge">📋 แผนขยายผล Migrate NSS — ปี 2569</div>
-  <h1>ปฏิทินเข้าร้าน สิงหาคม 2569</h1>
-  <p class="subtitle">เริ่มทำงานวันที่ 4-14 สิงหาคม 2569</p>
-  <div class="notice">⚠️ เฉพาะโซน BG1 · BG2 · BG9</div>
+<div class="wrap">
+
+  <header>
+    <div>
+      <p class="eyebrow">Retailink · Migrate NSS</p>
+      <h1>ปฏิทินแผน Migrate <span>BG1 · BG2 · BG9</span></h1>
+      <p class="sub">กันยายน 2026 — แตะวันที่เพื่อดูรายชื่อร้านที่เข้าในวันนั้น</p>
+    </div>
+    <div class="totals" id="totals"></div>
+  </header>
+
+  <div class="tabs" id="tabs"></div>
+
+  <div class="cal-head">
+    <div class="month-label">SEPTEMBER 2026</div>
+    <div class="month-label" id="filtered-total"></div>
+  </div>
+
+  <div class="weekdays">
+    <div>จันทร์</div><div>อังคาร</div><div>พุธ</div><div>พฤหัสฯ</div><div>ศุกร์</div><div>เสาร์</div><div>อาทิตย์</div>
+  </div>
+  <div class="grid" id="grid"></div>
+
+  <p class="legend-note">ตัวเลขในแต่ละวันคือจำนวนร้านที่มีแผนเข้าติดตั้งวันนั้น แยกตามเขต — ข้อมูลจากไฟล์แผน Migrate NSS เดือนกันยายน 2026</p>
 </div>
-<div class="stats" id="stats"></div>
-<div class="cal-wrap">
-  <div class="dhdrs" id="dhdrs"></div>
-  <div class="dgrid" id="dgrid"></div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <div class="date-label" id="modal-date"></div>
+        <div class="date-sub" id="modal-sub"></div>
+      </div>
+      <button class="close-btn" id="close-btn">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
 </div>
-<div id="detail"></div>
-<div class="legend">
-  <div class="li"><div class="ldot" style="background:#2563eb"></div>BG1</div>
-  <div class="li"><div class="ldot" style="background:#16a34a"></div>BG2</div>
-  <div class="li"><div class="ldot" style="background:#d97706"></div>BG9</div>
-</div>
-<div class="updated">อัพเดทข้อมูล NSS เมื่อวันที่ 25-07-69</div>
 
 <script>
-const CAL = {
-  4:[{store:"จรัญ-29(สายใต้เก่า)",zone:"BG1"},{store:"อิสระภาพ-21",zone:"BG2"}],
-  5:[{store:"จรัญฯ 22",zone:"BG1"},{store:"ปากคลอง 3",zone:"BG2"}],
-  6:[{store:"ชุมชนบางยี่ขัน",zone:"BG1"},{store:"สามเสน 2",zone:"BG2"}],
-  7:[{store:"ป.ปิ่นเกล้า (ตลิ่งชัน)",zone:"BG1"},{store:"ท่าเรือพระอาทิตย์",zone:"BG2"}],
-  8:[{store:"อรุณอัมรินทร์ 37",zone:"BG1"},{store:"อิสภาพ 37",zone:"BG2"}],
-  9:[{store:"ปิ่นเกล้า 3",zone:"BG1"},{store:"อิสรภาพ 35 แยก 10",zone:"BG2"}],
-  10:[{store:"เบลลินี G&G Shell พรานนก",zone:"BG1"},{store:"ถนนพระอาทิตย์",zone:"BG2"}],
-  11:[{store:"เบลลินี G&G รพ.ศิริราช ศูนย์อาหาร ริมน้ำ",zone:"BG2"},{store:"จรัญ 96/2",zone:"BG9"},{store:"เบลลินี B&B บางกรวย ไทรน้อย ซอย20",zone:"BG9"}],
-  12:[{store:"ซอยพิพิธโภคัย (กรุงเทพมหานคร)",zone:"BG2"},{store:"บางศรีเมือง",zone:"BG9"},{store:"บางกรวย-ไทรน้อย ซอย 17/1",zone:"BG9"}],
-  13:[{store:"ถนนอัษฎางค์",zone:"BG2"},{store:"สิรินธร - บางกรวย",zone:"BG9"},{store:"ซอยเพิ่มแฉล้มอุทิศ (สะพานเจษฎาบดินทร์)",zone:"BG9"}],
-  14:[{store:"คอนโดสมชาย",zone:"BG9"},{store:"เบลลินี G&G Makro นครอินทร์",zone:"BG9"},{store:"ช.สุขศรีเมือง",zone:"BG9"}]
+const STORES = [{"storeNo": "128", "storeName": "จรัญ-44", "zone": "BG1", "day": 4}, {"storeNo": "547", "storeName": "อรุณอัมรินทร์", "zone": "BG1", "day": 9}, {"storeNo": "1748", "storeName": "บรมราชชนนี", "zone": "BG1", "day": 5}, {"storeNo": "2826", "storeName": "เจริญสุข", "zone": "BG1", "day": 6}, {"storeNo": "3143", "storeName": "ท่าเรือปิ่นเกล้า", "zone": "BG1", "day": 9}, {"storeNo": "4612", "storeName": "บางขุนนนท์คอนโด", "zone": "BG1", "day": 20}, {"storeNo": "5570", "storeName": "บางพรหม ซอย 18", "zone": "BG1", "day": 14}, {"storeNo": "6007", "storeName": "บางขุนนนท์ จุด 3", "zone": "BG1", "day": 13}, {"storeNo": "6016", "storeName": "LPN สวีท ปิ่นเกล้า", "zone": "BG1", "day": 3}, {"storeNo": "6082", "storeName": "บางขุนศรี จุด 2", "zone": "BG1", "day": 20}, {"storeNo": "6367", "storeName": "จรัญฯ 57/1 จุด 2", "zone": "BG1", "day": 21}, {"storeNo": "7416", "storeName": "พาต้าปิ่นเกล้า", "zone": "BG1", "day": 10}, {"storeNo": "8492", "storeName": "สน.บางขุนนนท์ จุด 2", "zone": "BG1", "day": 13}, {"storeNo": "8773", "storeName": "จรัญสนิทวงศ์ 40 จุด 3", "zone": "BG1", "day": 18}, {"storeNo": "8918", "storeName": "ณุศาศิริ", "zone": "BG1", "day": 1}, {"storeNo": "9028", "storeName": "ตลาดบางขุนศรี", "zone": "BG1", "day": 2}, {"storeNo": "9210", "storeName": "ตลาดน้ำตลิ่งชัน", "zone": "BG1", "day": 12}, {"storeNo": "10535", "storeName": "ซอยรุ่งประชา", "zone": "BG1", "day": 15}, {"storeNo": "10619", "storeName": "จรัญสนิทวงศ์ 31", "zone": "BG1", "day": 10}, {"storeNo": "10773", "storeName": "Food Villa", "zone": "BG1", "day": 20}, {"storeNo": "11154", "storeName": "พรานนก - พุทธมณฑลสาย 4", "zone": "BG1", "day": 20}, {"storeNo": "13679", "storeName": "พรานนก ซอย 1", "zone": "BG1", "day": 19}, {"storeNo": "13916", "storeName": "ป.กุ้งเผา (บรมราชชนนี)", "zone": "BG1", "day": 18}, {"storeNo": "14415", "storeName": "LPN เพลส ปิ่นเกล้า 2", "zone": "BG1", "day": 6}, {"storeNo": "15087", "storeName": "Brix Condo", "zone": "BG1", "day": 8}, {"storeNo": "15439", "storeName": "จรัญสนิทวงศ์ 20", "zone": "BG1", "day": 17}, {"storeNo": "17108", "storeName": "PS พลัมคอนโด ปิ่นเกล้า", "zone": "BG1", "day": 3}, {"storeNo": "18436", "storeName": "จรัญสนิทวงศ์ 39", "zone": "BG1", "day": 21}, {"storeNo": "18447", "storeName": "ถนนรุ่งประชา (บรมราชชนนี)", "zone": "BG1", "day": 15}, {"storeNo": "18552", "storeName": "ตลาดไชยทิศ (ถนนเลียบทางรถไฟตลิ่งชัน)", "zone": "BG1", "day": 22}, {"storeNo": "18713", "storeName": "แยกปิ่นเกล้า", "zone": "BG1", "day": 10}, {"storeNo": "19724", "storeName": "IDEO Mobi จรัญฯ อินเตอร์เชนจ์", "zone": "BG1", "day": 14}, {"storeNo": "20662", "storeName": "จรัญสนิทวงศ์ 44 แยก 15", "zone": "BG1", "day": 21}, {"storeNo": "22442", "storeName": "ถนนรุ่งประชา (บรม-สิรินธร)", "zone": "BG1", "day": 12}, {"storeNo": "22615", "storeName": "บ้านแก้ววิลล่า (จุดใหม่)", "zone": "BG1", "day": 21}, {"storeNo": "22639", "storeName": "ซอยเอราวัณ ปาร์ค (ถนนเลียบรถไฟตลิ่งชั่น)", "zone": "BG1", "day": 22}, {"storeNo": "22939", "storeName": "ซอยอรุณอัมรินทร์ 30", "zone": "BG1", "day": 7}, {"storeNo": "117", "storeName": "ถนนดินสอ", "zone": "BG2", "day": 12}, {"storeNo": "123", "storeName": "พรานนก", "zone": "BG2", "day": 6}, {"storeNo": "292", "storeName": "จรัญฯ-13(2)", "zone": "BG2", "day": 2}, {"storeNo": "309", "storeName": "จรัญฯ 12", "zone": "BG2", "day": 18}, {"storeNo": "378", "storeName": "ถนนนครสวรรค์-นางเลิ้ง", "zone": "BG2", "day": 13}, {"storeNo": "471", "storeName": "จรัญ ฯ 13/3", "zone": "BG2", "day": 2}, {"storeNo": "528", "storeName": "อรุณอัมรินทร์ 18", "zone": "BG2", "day": 19}, {"storeNo": "694", "storeName": "วังวรดิศ", "zone": "BG2", "day": 13}, {"storeNo": "1461", "storeName": "หน้าพระลาน", "zone": "BG2", "day": 7}, {"storeNo": "1559", "storeName": "กระทรวงมหาดไทย", "zone": "BG2", "day": 8}, {"storeNo": "1567", "storeName": "กระออม", "zone": "BG2", "day": 12}, {"storeNo": "2986", "storeName": "ร้านสวัสดิการ สลน. (ทำเนียบรัฐบาล)", "zone": "BG2", "day": 5}, {"storeNo": "3033", "storeName": "ตลาดศาลาน้ำเย็น", "zone": "BG2", "day": 5}, {"storeNo": "3235", "storeName": "Booth หอพักแพทย์ ร.พ.ศิริราช", "zone": "BG2", "day": 1}, {"storeNo": "3524", "storeName": "ท่าเรือผ่านฟ้า", "zone": "BG2", "day": 17}, {"storeNo": "3972", "storeName": "หมู่บ้านอิ่มอัมพร", "zone": "BG2", "day": 23}, {"storeNo": "4416", "storeName": "หมู่บ้านธารทอง", "zone": "BG2", "day": 17}, {"storeNo": "4700", "storeName": "สมาคมหอการค้าไทย", "zone": "BG2", "day": 23}, {"storeNo": "4818", "storeName": "อิสรภาพ 21 จุด 2", "zone": "BG2", "day": 4}, {"storeNo": "4942", "storeName": "ม.อิ่มอัมพร จุด 2", "zone": "BG2", "day": 23}, {"storeNo": "4947", "storeName": "ท่าเรือศิริราช", "zone": "BG2", "day": 14}, {"storeNo": "5673", "storeName": "ถนนจักรพรรดิพงษ์", "zone": "BG2", "day": 23}, {"storeNo": "5841", "storeName": "จรัญสนิทวงศ์ 11", "zone": "BG2", "day": 10}, {"storeNo": "6548", "storeName": "Booth หอพักแพทย์ (รพ.ศิริราช จุด 2 )", "zone": "BG2", "day": 1}, {"storeNo": "7926", "storeName": "สามเสน 2 จุด 2", "zone": "BG2", "day": 8}, {"storeNo": "8555", "storeName": "ตรอกมะยม", "zone": "BG2", "day": 3}, {"storeNo": "9797", "storeName": "ถนนดินสอ จุด 2", "zone": "BG2", "day": 24}, {"storeNo": "10455", "storeName": "จรัญฯ 12 จุด 3", "zone": "BG2", "day": 18}, {"storeNo": "10858", "storeName": "อิสรภาพ 31", "zone": "BG2", "day": 24}, {"storeNo": "11016", "storeName": "ถนนตานี", "zone": "BG2", "day": 11}, {"storeNo": "11925", "storeName": "จรัญฯ 12 จุด 4", "zone": "BG2", "day": 18}, {"storeNo": "13168", "storeName": "ท่าเรือศิริราช จุด 2", "zone": "BG2", "day": 14}, {"storeNo": "13299", "storeName": "ปากซอยจรัญฯ 3", "zone": "BG2", "day": 22}, {"storeNo": "13487", "storeName": "เลียบคลองผดุง จุด 2", "zone": "BG2", "day": 11}, {"storeNo": "13758", "storeName": "อรุณอัมรินทร์ 15", "zone": "BG2", "day": 19}, {"storeNo": "14138", "storeName": "จรัญสนิทวงศ์ 3 จุด 4", "zone": "BG2", "day": 22}, {"storeNo": "15025", "storeName": "อาคารนวมินทรบพิต 84 พรรษา", "zone": "BG2", "day": 6}, {"storeNo": "16452", "storeName": "Booth รพ.ธนบุรี (อาคาร 5)", "zone": "BG2", "day": 4}, {"storeNo": "17222", "storeName": "บางลำภู 4", "zone": "BG2", "day": 9}, {"storeNo": "18319", "storeName": "อิสรภาพ 36", "zone": "BG2", "day": 16}, {"storeNo": "22515", "storeName": "Buddy (ถนนข้าวสาร)", "zone": "BG2", "day": 15}, {"storeNo": "22864", "storeName": "ถนนรามบุตรี", "zone": "BG2", "day": 15}, {"storeNo": "23047", "storeName": "อิสรภาพ 39 จุด 2", "zone": "BG2", "day": 16}, {"storeNo": "23564", "storeName": "หอพักแพทย์ 8 ไร่", "zone": "BG2", "day": 19}, {"storeNo": "23629", "storeName": "ซอยเขียนนิวาสน์ (สวนสันติชัยปราการ)", "zone": "BG2", "day": 17}, {"storeNo": "270", "storeName": "ริเวอร์ไซด์", "zone": "BG9", "day": 1}, {"storeNo": "633", "storeName": "จรัญฯ 79", "zone": "BG9", "day": 16}, {"storeNo": "3262", "storeName": "หมู่บ้านเยาวพรรณ", "zone": "BG9", "day": 26}, {"storeNo": "3593", "storeName": "จรัญสนิทวงศ์ 75/2", "zone": "BG9", "day": 1}, {"storeNo": "4334", "storeName": "หมู่บ้านธนภัทร", "zone": "BG9", "day": 26}, {"storeNo": "6004", "storeName": "เดอะริช - พระราม 5", "zone": "BG9", "day": 26}, {"storeNo": "6063", "storeName": "จรัญสนิทวงศ์ 92", "zone": "BG9", "day": 25}, {"storeNo": "6345", "storeName": "จรัญฯ 65 จุด 3", "zone": "BG9", "day": 16}, {"storeNo": "9498", "storeName": "บางกรวย - จงถนอม", "zone": "BG9", "day": 28}, {"storeNo": "10581", "storeName": "จรัญฯ 95/1", "zone": "BG9", "day": 8}, {"storeNo": "11190", "storeName": "จรัญฯ 71", "zone": "BG9", "day": 25}, {"storeNo": "11428", "storeName": "ธนากรวิลล่า 2", "zone": "BG9", "day": 24}, {"storeNo": "11706", "storeName": "สะพานเจษฎาบดินทร์", "zone": "BG9", "day": 30}, {"storeNo": "13580", "storeName": "บางอ้อ Home Town", "zone": "BG9", "day": 9}, {"storeNo": "13913", "storeName": "อบต.บางสีทอง", "zone": "BG9", "day": 28}, {"storeNo": "14189", "storeName": "Cool Condo บางกรวย", "zone": "BG9", "day": 7}, {"storeNo": "14483", "storeName": "จรัญฯ 75 แยก 3", "zone": "BG9", "day": 25}, {"storeNo": "15321", "storeName": "เลียบรางรถไฟสิรินธร-บางกรวย", "zone": "BG9", "day": 24}, {"storeNo": "15441", "storeName": "บางกรวยไทรน้อย 26", "zone": "BG9", "day": 29}, {"storeNo": "15559", "storeName": "บางศรีเมือง 11", "zone": "BG9", "day": 27}, {"storeNo": "15605", "storeName": "ตลาดกรุงธน", "zone": "BG9", "day": 3}, {"storeNo": "15689", "storeName": "อำเภอบางกรวย", "zone": "BG9", "day": 28}, {"storeNo": "16103", "storeName": "สิรินธร ซอย 7", "zone": "BG9", "day": 5}, {"storeNo": "16213", "storeName": "บางกรวยไทรน้อย ซอย 10", "zone": "BG9", "day": 28}, {"storeNo": "16826", "storeName": "บางกรวย-ไทรน้อย ซอย 20", "zone": "BG9", "day": 28}, {"storeNo": "17220", "storeName": "สถานีบางบำหรุ", "zone": "BG9", "day": 4}, {"storeNo": "17302", "storeName": "บางกรวย-ไทรน้อย ซอย 13/4", "zone": "BG9", "day": 11}, {"storeNo": "17798", "storeName": "จรัญฯ 97", "zone": "BG9", "day": 2}, {"storeNo": "18011", "storeName": "บางกรวย ไทรน้อย ซอย 6", "zone": "BG9", "day": 11}, {"storeNo": "18220", "storeName": "บางขนุน ซอย 2", "zone": "BG9", "day": 26}, {"storeNo": "18364", "storeName": "ศุภาลัย ซิตี้ รีสอร์ท จรัญฯ 91", "zone": "BG9", "day": 11}, {"storeNo": "19084", "storeName": "จรัญฯ 69", "zone": "BG9", "day": 25}, {"storeNo": "19085", "storeName": "จรัญฯ 75 แยก 20", "zone": "BG9", "day": 25}, {"storeNo": "19091", "storeName": "บางขนุนซอย 5 ปากซอย", "zone": "BG9", "day": 7}, {"storeNo": "19485", "storeName": "Ideo จรัญฯ70 - ริเวอร์วิว", "zone": "BG9", "day": 29}, {"storeNo": "19861", "storeName": "ถนนบางศรีเมือง 1 (กลางซอย)", "zone": "BG9", "day": 27}, {"storeNo": "19938", "storeName": "บางศรีเมือง 32 (ท่าน้ำบางศรีเมือง)", "zone": "BG9", "day": 29}, {"storeNo": "22441", "storeName": "หมู่บ้าน AP บางกรวย", "zone": "BG9", "day": 27}, {"storeNo": "22520", "storeName": "บางศรีเมือง 24", "zone": "BG9", "day": 30}, {"storeNo": "22730", "storeName": "บางกรวย-ไทรน้อย 43", "zone": "BG9", "day": 30}, {"storeNo": "23506", "storeName": "บางไผ่ 21 (บางศรีเมือง)", "zone": "BG9", "day": 27}, {"storeNo": "23672", "storeName": "ชุมชนเฉลิมพระเกียรติ (บางศรีเมือง)", "zone": "BG9", "day": 30}, {"storeNo": "23792", "storeName": "ถนนนครอินทร์ (สะพานพระราม 5)", "zone": "BG9", "day": 29}];
+
+const ZONES = {
+  BG1: { color: "var(--bg1)", label: "BG1" },
+  BG2: { color: "var(--bg2)", label: "BG2" },
+  BG9: { color: "var(--bg9)", label: "BG9" },
 };
 
-// สิงหาคม 2569 (2026) เริ่มวันเสาร์ = index 6
-const MSTART = 6;
-const MDAYS = 31;
-const ZC = {
-  BG1:{bg:"rgba(59,130,246,.15)",border:"#3b82f6",text:"#60a5fa",dot:"#2563eb"},
-  BG2:{bg:"rgba(34,197,94,.15)",border:"#22c55e",text:"#4ade80",dot:"#16a34a"},
-  BG9:{bg:"rgba(245,158,11,.15)",border:"#f59e0b",text:"#fbbf24",dot:"#d97706"}
-};
-const DAYS=["อา","จ","อ","พ","พฤ","ศ","ส"];
-let selDay=null, selZone="ALL";
+let activeZone = "ALL";
 
-function stats(){
-  const tot=Object.values(CAL).flat().length;
-  const cnt={BG1:0,BG2:0,BG9:0};
-  Object.values(CAL).flat().forEach(s=>{if(cnt[s.zone]!==undefined)cnt[s.zone]++;});
-  document.getElementById("stats").innerHTML=[
-    {l:"ทั้งเดือน",v:tot,c:"#a5b4fc",bg:"rgba(99,102,241,.15)",bc:"rgba(99,102,241,.4)"},
-    {l:"BG1",v:cnt.BG1,c:"#60a5fa",bg:"rgba(59,130,246,.1)",bc:"rgba(59,130,246,.4)"},
-    {l:"BG2",v:cnt.BG2,c:"#4ade80",bg:"rgba(34,197,94,.1)",bc:"rgba(34,197,94,.4)"},
-    {l:"BG9",v:cnt.BG9,c:"#fbbf24",bg:"rgba(245,158,11,.1)",bc:"rgba(245,158,11,.4)"}
-  ].map(s=>`<div class="stat" style="background:${s.bg};border-color:${s.bc}"><div class="stat-num" style="color:${s.c}">${s.v}</div><div class="stat-label">${s.l}</div></div>`).join("");
+// ---------- Build totals ----------
+const totalsEl = document.getElementById('totals');
+Object.keys(ZONES).forEach(z => {
+  const count = STORES.filter(s => s.zone === z).length;
+  const chip = document.createElement('div');
+  chip.className = 'total-chip';
+  chip.innerHTML = `<span class="dot" style="background:${ZONES[z].color}"></span>${ZONES[z].label} <b>${count}</b> ร้าน`;
+  totalsEl.appendChild(chip);
+});
+
+// ---------- Build tabs ----------
+const tabsEl = document.getElementById('tabs');
+function renderTabs(){
+  tabsEl.innerHTML = '';
+  const allTab = document.createElement('button');
+  allTab.className = 'tab' + (activeZone === 'ALL' ? ' active' : '');
+  allTab.textContent = `ทั้งหมด (${STORES.length})`;
+  allTab.onclick = () => { activeZone = 'ALL'; renderTabs(); renderGrid(); };
+  tabsEl.appendChild(allTab);
+
+  Object.keys(ZONES).forEach(z => {
+    const count = STORES.filter(s => s.zone === z).length;
+    const tab = document.createElement('button');
+    tab.className = 'tab' + (activeZone === z ? ' active' : '');
+    tab.innerHTML = `<span class="dot" style="background:${ZONES[z].color}"></span>${ZONES[z].label} (${count})`;
+    tab.onclick = () => { activeZone = z; renderTabs(); renderGrid(); };
+    tabsEl.appendChild(tab);
+  });
 }
 
-function dhdrs(){
-  document.getElementById("dhdrs").innerHTML=DAYS.map((d,i)=>
-    `<div class="dhdr ${i===0||i===6?"we":""}">${d}</div>`
-  ).join("");
+// ---------- Calendar math: Sept 2026 ----------
+const YEAR = 2026, MONTH = 8; // 0-indexed: 8 = September
+const daysInMonth = new Date(YEAR, MONTH + 1, 0).getDate();
+const firstWeekday = (new Date(YEAR, MONTH, 1).getDay() + 6) % 7; // Mon=0..Sun=6
+
+const gridEl = document.getElementById('grid');
+const filteredTotalEl = document.getElementById('filtered-total');
+
+function storesForDay(day, zoneFilter){
+  return STORES.filter(s => s.day === day && (zoneFilter === 'ALL' || s.zone === zoneFilter));
 }
 
-function calendar(){
-  let h="";
-  for(let i=0;i<MSTART;i++) h+=`<div></div>`;
-  for(let d=1;d<=MDAYS;d++){
-    const stores=CAL[d]||[];
-    const isSel=selDay===d, has=stores.length>0;
-    const col=(MSTART+d-1)%7, we=col===0||col===6;
-    const zones=[...new Set(stores.map(s=>s.zone))];
-    h+=`<div class="dcell ${has?"has":""} ${isSel?"sel":""}" onclick="pickDay(${d})">
-      <span class="dnum ${we?"we":""}">${d}</span>
-      ${has?`<div class="ddots">${zones.map(z=>`<div class="dot" style="background:${ZC[z]?.dot||"#999"}"></div>`).join("")}</div><span class="dcnt">${stores.length} ร้าน</span>`:""}
-    </div>`;
+function renderGrid(){
+  gridEl.innerHTML = '';
+  const visibleStores = STORES.filter(s => activeZone === 'ALL' || s.zone === activeZone);
+  filteredTotalEl.textContent = `${visibleStores.length} ร้าน ในเดือนนี้`;
+
+  for(let i=0;i<firstWeekday;i++){
+    const empty = document.createElement('div');
+    empty.className = 'cell empty';
+    gridEl.appendChild(empty);
   }
-  document.getElementById("dgrid").innerHTML=h;
+
+  for(let day=1; day<=daysInMonth; day++){
+    const cell = document.createElement('div');
+    const weekdayIdx = (firstWeekday + day - 1) % 7;
+    const isWeekend = weekdayIdx === 5 || weekdayIdx === 6;
+    const dayStores = storesForDay(day, activeZone);
+    cell.className = 'cell' + (isWeekend ? ' weekend' : '') + (dayStores.length ? ' has-data' : '');
+
+    const daynum = document.createElement('div');
+    daynum.className = 'daynum';
+    daynum.textContent = day;
+    cell.appendChild(daynum);
+
+    if(dayStores.length){
+      const badge = document.createElement('div');
+      badge.className = 'count-badge';
+      badge.textContent = dayStores.length;
+      cell.appendChild(badge);
+
+      const chips = document.createElement('div');
+      chips.className = 'chips';
+      const zonesPresent = activeZone === 'ALL' ? Object.keys(ZONES) : [activeZone];
+      zonesPresent.forEach(z => {
+        const n = dayStores.filter(s => s.zone === z).length;
+        if(n > 0){
+          const row = document.createElement('div');
+          row.className = 'chip-row';
+          row.innerHTML = `<span class="sq" style="background:${ZONES[z].color}"></span>${ZONES[z].label} <span class="n">${n}</span>`;
+          chips.appendChild(row);
+        }
+      });
+      cell.appendChild(chips);
+
+      cell.onclick = () => openModal(day, dayStores);
+    }
+
+    gridEl.appendChild(cell);
+  }
 }
 
-function detail(){
-  const el=document.getElementById("detail");
-  if(!selDay){el.innerHTML=`<div class="hint">👆 แตะวันที่ที่มีจุดสีเพื่อดูรายการร้านค้า</div>`;return;}
-  const stores=CAL[selDay]||[];
-  const filtered=selZone==="ALL"?stores:stores.filter(s=>s.zone===selZone);
-  const zm={ALL:"a-all",BG1:"a-bg1",BG2:"a-bg2",BG9:"a-bg9"};
-  const col=(MSTART+selDay-1)%7;
-  const dayName=DAYS[col];
-  const cards=filtered.length===0
-    ?`<div class="empty">ไม่มีร้านในโซนนี้วันนี้</div>`
-    :filtered.map(s=>{
-        const z=ZC[s.zone]||{bg:"#1e293b",border:"#475569",text:"#94a3b8",dot:"#475569"};
-        return `<div class="scard">
-          <div class="sdot" style="background:${z.dot}"></div>
-          <div style="flex:1;min-width:0">
-            <div class="sname">${s.store}</div>
-            <div class="smeta"><span class="zbadge" style="background:${z.bg};color:${z.text};border-color:${z.border}60">${s.zone}</span></div>
-          </div>
-        </div>`;
-      }).join("");
-  el.innerHTML=`<div class="detail">
-    <div class="dh">
-      <div class="dtitle">📅 วัน${dayName} ${selDay} สิงหาคม 2569 — ${stores.length} ร้าน</div>
-      <div class="zfilters">${["ALL","BG1","BG2","BG9"].map(z=>`<button class="zfbtn ${selZone===z?zm[z]:""}" onclick="pickZone('${z}')">${z}</button>`).join("")}</div>
-    </div>
-    <div class="slist">${cards}</div>
-  </div>`;
+// ---------- Modal ----------
+const overlay = document.getElementById('overlay');
+const modalDate = document.getElementById('modal-date');
+const modalSub = document.getElementById('modal-sub');
+const modalBody = document.getElementById('modal-body');
+const closeBtn = document.getElementById('close-btn');
+const THAI_WEEKDAY = ['จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์','อาทิตย์'];
+
+function openModal(day, dayStores){
+  const weekdayIdx = (firstWeekday + day - 1) % 7;
+  modalDate.textContent = `${day} กันยายน 2026`;
+  modalSub.textContent = `วัน${THAI_WEEKDAY[weekdayIdx]} · ${dayStores.length} ร้านเข้าติดตั้ง`;
+
+  modalBody.innerHTML = '';
+  if(dayStores.length === 0){
+    modalBody.innerHTML = '<div class="empty-modal">ไม่มีร้านเข้าในวันนี้</div>';
+  } else {
+    Object.keys(ZONES).forEach(z => {
+      const list = dayStores.filter(s => s.zone === z);
+      if(list.length === 0) return;
+      const group = document.createElement('div');
+      group.className = 'zone-group';
+      group.innerHTML = `<div class="zone-title"><span class="sq" style="background:${ZONES[z].color}"></span><b>${ZONES[z].label}</b> — ${list.length} ร้าน</div>`;
+      const ul = document.createElement('ul');
+      ul.className = 'store-list';
+      list.forEach(s => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span>${s.storeName}</span><span class="no">#${s.storeNo}</span>`;
+        ul.appendChild(li);
+      });
+      group.appendChild(ul);
+      modalBody.appendChild(group);
+    });
+  }
+  overlay.classList.add('show');
 }
+closeBtn.onclick = () => overlay.classList.remove('show');
+overlay.onclick = (e) => { if(e.target === overlay) overlay.classList.remove('show'); };
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape') overlay.classList.remove('show'); });
 
-function pickDay(d){selDay=selDay===d?null:d;selZone="ALL";calendar();detail();}
-function pickZone(z){selZone=z;detail();}
-
-stats();dhdrs();calendar();detail();
+renderTabs();
+renderGrid();
 </script>
 </body>
 </html>
