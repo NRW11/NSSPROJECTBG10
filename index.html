@@ -27,7 +27,7 @@ select{background:#1e293b;color:#e2e8f0;border:1px solid rgba(255,255,255,.15);b
 
 /* TABLE */
 .table-wrap{overflow-x:auto;padding:12px 16px}
-table{width:100%;border-collapse:collapse;min-width:580px}
+table{width:100%;border-collapse:collapse;min-width:640px}
 th{background:#1e293b;color:#94a3b8;font-size:11px;font-weight:700;padding:10px 12px;text-align:left;border-bottom:2px solid rgba(99,102,241,.3);white-space:nowrap}
 td{padding:9px 12px;font-size:13px;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:middle}
 tr:hover td{background:rgba(255,255,255,.03)}
@@ -35,8 +35,8 @@ tr:hover td{background:rgba(255,255,255,.03)}
 .zone-BG1{background:rgba(59,130,246,.15);color:#60a5fa;border-color:rgba(59,130,246,.4)}
 .zone-BG2{background:rgba(34,197,94,.15);color:#4ade80;border-color:rgba(34,197,94,.4)}
 .zone-BG9{background:rgba(245,158,11,.15);color:#fbbf24;border-color:rgba(245,158,11,.4)}
-.we-row td:first-child{color:#fbbf24}
-.we-row .day-col{color:#fbbf24}
+.peak-tag{display:inline-block;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.35);color:#fca5a5;border-radius:4px;font-size:10px;padding:2px 6px;white-space:nowrap}
+.we-row td:first-child,.we-row .wdc{color:#fbbf24}
 .store-no{color:#64748b;font-size:12px;font-family:monospace}
 .no-data{text-align:center;color:#334155;padding:40px 20px;font-size:13px}
 
@@ -45,9 +45,9 @@ tr:hover td{background:rgba(255,255,255,.03)}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
 .cal-hdr{text-align:center;padding:8px 2px;font-size:11px;font-weight:700;color:#64748b}
 .cal-hdr.we{color:#f87171}
-.cal-day{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:7px 5px;min-height:80px;cursor:pointer;transition:all .15s}
+.cal-day{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:7px 5px;min-height:82px;cursor:pointer;transition:all .15s}
 .cal-day.has{border-color:rgba(255,255,255,.15)}
-.cal-day.sel{border-color:#6366f1 !important;background:rgba(99,102,241,.2);box-shadow:0 0 0 1px #6366f1}
+.cal-day.sel{border-color:#6366f1!important;background:rgba(99,102,241,.2);box-shadow:0 0 0 1px #6366f1}
 .cal-day.we-bg{background:rgba(251,191,36,.03)}
 .cal-day.empty{background:transparent;border-color:transparent;cursor:default}
 .cal-dnum{font-size:12px;font-weight:700;color:#cbd5e1;margin-bottom:4px}
@@ -59,15 +59,18 @@ tr:hover td{background:rgba(255,255,255,.03)}
 .cal-tot{font-size:9px;color:#475569;margin-top:2px}
 
 /* DETAIL */
-.dp{background:#1e293b;border-top:2px solid rgba(99,102,241,.3);padding:16px;display:none;margin-top:4px;border-radius:0 0 12px 12px}
+.dp{background:#1e293b;border-top:2px solid rgba(99,102,241,.3);padding:16px;display:none;margin-top:4px}
 .dp.show{display:block}
 .dp-title{font-size:15px;font-weight:700;color:#c7d2fe;margin-bottom:12px}
 .dp-zones{display:flex;gap:12px;flex-wrap:wrap}
-.dp-zone{flex:1;min-width:190px}
+.dp-zone{flex:1;min-width:200px}
 .dp-zhdr{font-size:12px;font-weight:700;padding:4px 10px;border-radius:6px;display:inline-block;margin-bottom:8px}
-.dp-store{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border-radius:7px;padding:7px 10px;font-size:12px;margin-bottom:5px}
-.dp-sno{color:#475569;font-size:11px;font-family:monospace;min-width:48px}
-.zdot{display:inline-block;width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dp-store{display:flex;align-items:flex-start;gap:8px;background:rgba(255,255,255,.04);border-radius:7px;padding:8px 10px;font-size:12px;margin-bottom:5px}
+.dp-info{flex:1;min-width:0}
+.dp-sname{font-size:13px;font-weight:500;color:#e2e8f0}
+.dp-sno{color:#475569;font-size:10px;font-family:monospace}
+.dp-peak{display:inline-flex;align-items:center;gap:4px;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);color:#fca5a5;border-radius:4px;font-size:10px;padding:2px 7px;margin-top:4px}
+.zdot{display:inline-block;width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px}
 .hidden{display:none}
 </style>
 </head>
@@ -76,7 +79,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <div class="topbar">
   <h1>📋 แผน Migrate NSS — กันยายน 2569</h1>
   <p>BG1 · BG2 · BG9  |  เฉพาะสาขาที่กำหนดวันแล้ว</p>
-  <div class="updated">⏱ อัพเดทข้อมูล NSS เมื่อวันที่ 25-07-69</div>
+  <div class="updated">⏱ อัพเดทข้อมูล NSS เมื่อวันที่ 20-08-69</div>
 </div>
 
 <div class="stats" id="stats"></div>
@@ -99,7 +102,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
 <div id="tv">
   <div class="table-wrap">
     <table><thead><tr>
-      <th>วันที่</th><th>วัน</th><th>Store No</th><th>ชื่อสาขา</th><th>Zone</th>
+      <th>วันที่</th><th>วัน</th><th>Store No</th><th>ชื่อสาขา</th><th>Zone</th><th>⏰ Peak Time</th>
     </tr></thead>
     <tbody id="tb"></tbody></table>
   </div>
@@ -116,7 +119,7 @@ tr:hover td{background:rgba(255,255,255,.03)}
 </div>
 
 <script>
-const RAW={"2": {"BG1": [{"s": "Brix Condo", "n": 15087}], "BG2": [], "BG9": []}, "3": {"BG1": [{"s": "จรัญสนิทวงศ์ 44 แยก 15", "n": 20662}], "BG2": [], "BG9": []}, "4": {"BG1": [{"s": "จรัญ-44", "n": 128}], "BG2": [], "BG9": [{"s": "จรัญฯ 71", "n": 11190}]}, "5": {"BG1": [{"s": "แยกปิ่นเกล้า", "n": 18713}], "BG2": [], "BG9": [{"s": "จรัญฯ 65 จุด 3", "n": 6345}]}, "6": {"BG1": [{"s": "จรัญสนิทวงศ์ 40 จุด 3", "n": 8773}], "BG2": [], "BG9": [{"s": "บางอ้อ Home Town", "n": 13580}]}, "7": {"BG1": [{"s": "LPN สวีท ปิ่นเกล้า", "n": 6016}], "BG2": [], "BG9": [{"s": "ตลาดกรุงธน", "n": 15605}]}, "8": {"BG1": [{"s": "PS พลัมคอนโด ปิ่นเกล้า", "n": 17108}], "BG2": [], "BG9": [{"s": "ริเวอร์ไซด์", "n": 270}]}, "9": {"BG1": [{"s": "พาต้าปิ่นเกล้า", "n": 7416}], "BG2": [], "BG9": [{"s": "จรัญฯ 75 แยก 3", "n": 14483}]}, "10": {"BG1": [{"s": "ซอยอรุณอัมรินทร์ 30", "n": 22939}], "BG2": [], "BG9": [{"s": "จรัญสนิทวงศ์ 75/2", "n": 3593}]}, "11": {"BG1": [{"s": "เจริญสุข", "n": 2826}], "BG2": [], "BG9": []}, "12": {"BG1": [{"s": "LPN เพลส ปิ่นเกล้า 2", "n": 14415}], "BG2": [], "BG9": [{"s": "จรัญฯ 79", "n": 633}]}, "13": {"BG1": [{"s": "ถนนรุ่งประชา (บรมราชชนนี)", "n": 18447}], "BG2": [], "BG9": []}, "14": {"BG1": [{"s": "ป.กุ้งเผา (บรมราชชนนี)", "n": 13916}], "BG2": [], "BG9": [{"s": "จรัญฯ 97", "n": 17798}]}, "15": {"BG1": [], "BG2": [{"s": "ซอยเขียนนิวาสน์ (สวนสันติชัยปราการ)", "n": 23629}], "BG9": [{"s": "บางขนุนซอย 5 ปากซอย", "n": 19091}]}, "16": {"BG1": [], "BG2": [{"s": "สามเสน 2 จุด 2", "n": 7926}], "BG9": []}, "17": {"BG1": [], "BG2": [{"s": "ถนนรามบุตรี", "n": 22864}], "BG9": []}, "18": {"BG1": [], "BG2": [{"s": "ตรอกมะยม", "n": 8555}], "BG9": []}, "19": {"BG1": [], "BG2": [{"s": "ท่าเรือผ่านฟ้า", "n": 3524}], "BG9": [{"s": "จรัญฯ 69", "n": 19084}]}, "20": {"BG1": [], "BG2": [{"s": "ถนนดินสอ", "n": 117}], "BG9": []}, "21": {"BG1": [], "BG2": [{"s": "วังวรดิศ", "n": 694}], "BG9": [{"s": "จรัญฯ 75 แยก 20", "n": 19085}]}, "22": {"BG1": [], "BG2": [{"s": "ถนนจักรพรรดิพงษ์", "n": 5673}], "BG9": [{"s": "สิรินธร ซอย 7", "n": 16103}]}, "23": {"BG1": [], "BG2": [{"s": "กระออม", "n": 1567}], "BG9": [{"s": "ธนากรวิลล่า 2", "n": 11428}]}, "24": {"BG1": [], "BG2": [{"s": "บางลำภู 4", "n": 17222}], "BG9": []}, "25": {"BG1": [], "BG2": [{"s": "ถนนตานี", "n": 11016}], "BG9": []}, "26": {"BG1": [], "BG2": [{"s": "Buddy (ถนนข้าวสาร)", "n": 22515}], "BG9": []}, "27": {"BG1": [], "BG2": [{"s": "สมาคมหอการค้าไทย", "n": 4700}], "BG9": []}, "28": {"BG1": [], "BG2": [{"s": "กระทรวงมหาดไทย", "n": 1559}], "BG9": []}, "29": {"BG1": [], "BG2": [{"s": "หน้าพระลาน", "n": 1461}], "BG9": [{"s": "เลียบรางรถไฟสิรินธร-บางกรวย", "n": 15321}]}};
+const RAW={"4": {"BG1": [{"s": "จรัญ-44", "n": 128, "p": "17.00-23.00"}], "BG2": [], "BG9": [{"s": "จรัญฯ 71", "n": 11190, "p": "17.00-23.00"}]}, "11": {"BG1": [{"s": "เจริญสุข", "n": 2826, "p": "17.00-23.00"}], "BG2": [], "BG9": []}, "7": {"BG1": [{"s": "LPN สวีท ปิ่นเกล้า", "n": 6016, "p": "17.00-23.00"}], "BG2": [], "BG9": [{"s": "ตลาดกรุงธน", "n": 15605, "p": "17.00-23.00"}]}, "9": {"BG1": [{"s": "พาต้าปิ่นเกล้า", "n": 7416, "p": "17.00-20.00"}], "BG2": [], "BG9": [{"s": "จรัญฯ 75 แยก 3", "n": 14483, "p": "17.00-23.00"}]}, "6": {"BG1": [{"s": "จรัญสนิทวงศ์ 40 จุด 3", "n": 8773, "p": "17.00-23.00"}], "BG2": [], "BG9": [{"s": "บางอ้อ Home Town", "n": 13580, "p": "17.00-23.00"}]}, "14": {"BG1": [{"s": "ป.กุ้งเผา (บรมราชชนนี)", "n": 13916, "p": "17.00-23.00"}], "BG2": [], "BG9": [{"s": "จรัญฯ 97", "n": 17798, "p": "17.00-23.00"}]}, "12": {"BG1": [{"s": "LPN เพลส ปิ่นเกล้า 2", "n": 14415, "p": "17.00-23.00"}], "BG2": [], "BG9": [{"s": "จรัญฯ 79", "n": 633, "p": "17.00-23.00"}]}, "2": {"BG1": [{"s": "Brix Condo", "n": 15087, "p": "17.00-23.00"}], "BG2": [], "BG9": []}, "8": {"BG1": [{"s": "PS พลัมคอนโด ปิ่นเกล้า", "n": 17108, "p": "17.00-23.00"}], "BG2": [], "BG9": [{"s": "ริเวอร์ไซด์", "n": 270, "p": "17.00-23.00"}]}, "13": {"BG1": [{"s": "ถนนรุ่งประชา (บรมราชชนนี)", "n": 18447, "p": "17.00-23.00"}], "BG2": [], "BG9": []}, "5": {"BG1": [{"s": "แยกปิ่นเกล้า", "n": 18713, "p": "17.00-23.00"}], "BG2": [], "BG9": [{"s": "จรัญฯ 65 จุด 3", "n": 6345, "p": "17.00-23.00"}]}, "3": {"BG1": [{"s": "จรัญสนิทวงศ์ 44 แยก 15", "n": 20662, "p": "17.00-23.00"}], "BG2": [], "BG9": []}, "10": {"BG1": [{"s": "ซอยอรุณอัมรินทร์ 30", "n": 22939, "p": "17.00-23.00"}], "BG2": [], "BG9": [{"s": "จรัญสนิทวงศ์ 75/2", "n": 3593, "p": "17.00-23.00"}]}, "20": {"BG1": [], "BG2": [{"s": "ถนนดินสอ", "n": 117, "p": "08.00-09.00,12.00-13.00,17.00-20.00"}], "BG9": []}, "21": {"BG1": [], "BG2": [{"s": "วังวรดิศ", "n": 694, "p": "08.00-09.00,12.00-13.00,17.00-20.00"}], "BG9": [{"s": "จรัญฯ 75 แยก 20", "n": 19085, "p": "17.00-23.00"}]}, "29": {"BG1": [], "BG2": [{"s": "หน้าพระลาน", "n": 1461, "p": "18.00-24.00"}], "BG9": [{"s": "เลียบรางรถไฟสิรินธร-บางกรวย", "n": 15321, "p": "17.00-23.00"}]}, "28": {"BG1": [], "BG2": [{"s": "กระทรวงมหาดไทย", "n": 1559, "p": "08.00-09.00,12.00-13.00,17.00-20.00"}, {"s": "สมาคมหอการค้าไทย", "n": 4700, "p": "08.00-09.00,12.00-13.00,17.00-20.00"}], "BG9": []}, "23": {"BG1": [], "BG2": [{"s": "กระออม", "n": 1567, "p": "08.00-09.00,12.00-13.00,17.00-20.00"}], "BG9": [{"s": "ธนากรวิลล่า 2", "n": 11428, "p": "17.00-23.00"}]}, "19": {"BG1": [], "BG2": [{"s": "ท่าเรือผ่านฟ้า", "n": 3524, "p": "18.00-24.00"}], "BG9": [{"s": "จรัญฯ 69", "n": 19084, "p": "11.00-13.00,17.00-20.00"}]}, "22": {"BG1": [], "BG2": [{"s": "ถนนจักรพรรดิพงษ์", "n": 5673, "p": "17.00-23.00"}], "BG9": [{"s": "สิรินธร ซอย 7", "n": 16103, "p": "17.00-23.00"}]}, "16": {"BG1": [], "BG2": [{"s": "สามเสน 2 จุด 2", "n": 7926, "p": "18.00-24.00"}], "BG9": []}, "18": {"BG1": [], "BG2": [{"s": "ตรอกมะยม", "n": 8555, "p": "18.00-24.00"}], "BG9": []}, "25": {"BG1": [], "BG2": [{"s": "ถนนตานี", "n": 11016, "p": "18.00-24.00"}], "BG9": []}, "24": {"BG1": [], "BG2": [{"s": "บางลำภู 4", "n": 17222, "p": "18.00-24.00"}], "BG9": []}, "26": {"BG1": [], "BG2": [{"s": "Buddy (ถนนข้าวสาร)", "n": 22515, "p": "18.00-24.00"}], "BG9": []}, "17": {"BG1": [], "BG2": [{"s": "ถนนรามบุตรี", "n": 22864, "p": "18.00-24.00"}], "BG9": []}, "15": {"BG1": [], "BG2": [{"s": "ซอยเขียนนิวาสน์ (สวนสันติชัยปราการ)", "n": 23629, "p": "18.00-24.00"}], "BG9": [{"s": "บางขนุนซอย 5 ปากซอย", "n": 19091, "p": "17.00-23.00"}]}};
 const DTH={0:'จันทร์',1:'อังคาร',2:'พุธ',3:'พฤหัส',4:'ศุกร์',5:'เสาร์',6:'อาทิตย์'};
 const ZC={BG1:'#3b82f6',BG2:'#22c55e',BG9:'#f59e0b'};
 
@@ -126,7 +129,7 @@ for(let d=1;d<=30;d++){
   ['BG1','BG2','BG9'].forEach(z=>{
     (day[z]||[]).forEach(s=>{
       const dt=new Date(2026,8,d);
-      all.push({day:d,wd:dt.getDay(),zone:z,store:s.s,sno:s.n});
+      all.push({day:d,wd:dt.getDay(),zone:z,store:s.s,sno:s.n,peak:s.p||''});
     });
   });
 }
@@ -143,17 +146,23 @@ function renderStats(){
   ].map(s=>`<div class="stat" style="border-color:${s.bc}"><div class="stat-num" style="color:${s.c}">${s.v}</div><div class="stat-label">${s.l}</div></div>`).join('');
 }
 
+function peakTag(p){
+  if(!p) return '<span style="color:#334155;font-size:11px">—</span>';
+  return p.split(',').map(t=>`<span class="peak-tag">⏰ ${t.trim()}</span>`).join(' ');
+}
+
 function renderTable(data){
   document.getElementById('tb').innerHTML=data.length===0
-    ?`<tr><td colspan="5" class="no-data">ไม่พบข้อมูล</td></tr>`
+    ?`<tr><td colspan="6" class="no-data">ไม่พบข้อมูล</td></tr>`
     :data.map(s=>{
       const we=[0,6].includes(s.wd);
       return`<tr class="${we?'we-row':''}">
         <td style="font-weight:700;color:${we?'#fbbf24':'#e2e8f0'}">${s.day}</td>
-        <td class="day-col" style="font-size:12px;color:${we?'#fbbf24':'#94a3b8'}">${DTH[s.wd]}</td>
+        <td class="wdc" style="font-size:12px;color:${we?'#fbbf24':'#94a3b8'}">${DTH[s.wd]}</td>
         <td class="store-no">${s.sno}</td>
-        <td style="font-size:13px">${s.store}</td>
+        <td>${s.store}</td>
         <td><span class="zone-badge zone-${s.zone}">${s.zone}</span></td>
+        <td>${peakTag(s.peak)}</td>
       </tr>`;
     }).join('');
 }
@@ -161,16 +170,15 @@ function renderTable(data){
 let selD=null;
 function renderCal(){
   const WD=['อา','จ','อ','พ','พฤ','ศ','ส'];
-  // กันยายน 2569 เริ่มวันอังคาร = index 2
   let h=WD.map((d,i)=>`<div class="cal-hdr ${i===0||i===6?'we':''}">${d}</div>`).join('');
   for(let i=0;i<2;i++) h+=`<div class="cal-day empty"></div>`;
   for(let d=1;d<=30;d++){
     const dt=new Date(2026,8,d);
-    const wd=dt.getDay(), we=wd===0||wd===6;
+    const wd=dt.getDay(),we=wd===0||wd===6;
     const day=RAW[d]||{};
     const tot=['BG1','BG2','BG9'].reduce((a,z)=>a+(day[z]||[]).length,0);
-    const pills=['BG1','BG2','BG9'].filter(z=>(day[z]||[]).length).map(z=>
-      `<div class="cal-pill pill-${z}">${z}:${(day[z]||[]).length}</div>`).join('');
+    const pills=['BG1','BG2','BG9'].filter(z=>(day[z]||[]).length)
+      .map(z=>`<div class="cal-pill pill-${z}">${z}:${(day[z]||[]).length}</div>`).join('');
     h+=`<div class="cal-day ${tot?'has':''} ${selD===d?'sel':''} ${we?'we-bg':''}" onclick="pickD(${d})">
       <div class="cal-dnum ${we?'we':''}">${d}</div>
       ${pills}
@@ -198,8 +206,11 @@ function pickD(d){
       <div class="dp-zhdr" style="background:${bg};color:${tc}">${z} — ${stores.length} ร้าน</div>
       ${stores.map(s=>`<div class="dp-store">
         <span class="zdot" style="background:${ZC[z]}"></span>
-        <span class="dp-sno">${s.n}</span>
-        <span>${s.s}</span>
+        <div class="dp-info">
+          <div class="dp-sname">${s.s}</div>
+          <div class="dp-sno">#${s.n}</div>
+          ${s.p?`<div class="dp-peak">⏰ ${s.p}</div>`:''}
+        </div>
       </div>`).join('')}
     </div>`;
   }).join('');
